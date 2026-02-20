@@ -1,10 +1,10 @@
 {
   "name": "fresh-cart",
   "version": "0.0.0",
- "scripts": {
+"scripts": {
   "ng": "ng",
   "start": "ng serve",
-  "build": "ng build && ng run freshCart:server",
+  "build": "ng build",
   "build:ssr": "ng build && ng run freshCart:server",
   "serve:ssr": "node dist/freshCart/server/main.js"
 },
