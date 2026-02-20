@@ -1,17 +1,15 @@
 {
-  "buildCommand": "ng build",
-  "outputDirectory": "dist/freshCart/browser",
-  "installCommand": "npm install",
-  "framework": "angular",
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/node" },
+    { "src": "dist/freshCart/server/main.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "dist/freshCart/server/main.js" }
+  ],
   "functions": {
-    "dist/freshCart/server/server.mjs": {
-      "runtime": "nodejs20.x"
+    "dist/freshCart/server/main.js": {
+      "runtime": "nodejs18.x"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/dist/freshCart/server/server.mjs"
-    }
-  ]
+  }
 }

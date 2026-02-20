@@ -9,13 +9,11 @@
   "projects": {
     "freshCart": {
       "projectType": "application",
-      "schematics": {"@schematics/angular:component": {
-        "type": "component"},
-      "@schematics/angular:service": {
-        "type": "service"},
-      "@schematics/angular:interface": {
-        "type": "interface"}
-    },
+      "schematics": {
+        "@schematics/angular:component": { "type": "component" },
+        "@schematics/angular:service": { "type": "service" },
+        "@schematics/angular:interface": { "type": "interface" }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -25,12 +23,7 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+            "assets": [{ "glob": "**/*", "input": "public" }],
             "styles": [
               "node_modules/ngx-spinner/animations/ball-fussion.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
@@ -39,26 +32,15 @@
               "src/styles.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
-
             "server": "src/main.server.ts",
             "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "ssr": { "entry": "src/server.ts" }
           },
           "configurations": {
             "production": {
               "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "700kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
+                { "type": "initial", "maximumWarning": "700kB", "maximumError": "1MB" },
+                { "type": "anyComponentStyle", "maximumWarning": "4kB", "maximumError": "8kB" }
               ],
               "outputHashing": "all"
             },
@@ -79,18 +61,12 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "freshCart:build:production"
-            },
-            "development": {
-              "buildTarget": "freshCart:build:development"
-            }
+            "production": { "buildTarget": "freshCart:build:production" },
+            "development": { "buildTarget": "freshCart:build:development" }
           },
           "defaultConfiguration": "development"
         },
-        "test": {
-          "builder": "@angular/build:unit-test"
-        }
+        "test": { "builder": "@angular/build:unit-test" }
       }
     }
   }
