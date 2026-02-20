@@ -1,0 +1,17 @@
+{
+  "buildCommand": "ng build",
+  "outputDirectory": "dist/freshCart/browser",
+  "installCommand": "npm install",
+  "framework": "angular",
+  "functions": {
+    "dist/freshCart/server/server.mjs": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/dist/freshCart/server/server.mjs"
+    }
+  ]
+}
