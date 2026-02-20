@@ -1,0 +1,122 @@
+
+<nav class="bg-white shadow-lg border-b border-gray-200 fixed top-0 start-0 z-20 w-full">
+    <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <!-- Logo -->
+        <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse group">
+            <img src="/assets/images/freshcart-logo.svg" class="h-8 group-hover:scale-110 transition-transform duration-300" alt="FreshCart Logo" />
+            <span class="self-center text-xl font-bold text-gray-800 group-hover:text-teal-600 transition-colors duration-300 whitespace-nowrap"></span>
+        </a>
+        
+        <!-- Mobile Menu Button -->
+        <button data-collapse-toggle="navbar-default" type="button" 
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-600 rounded-lg md:hidden hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all duration-200" 
+                aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+            </svg>
+        </button>
+        
+        <!-- Main Navigation -->
+        <div class="hidden w-full md:flex md:grow md:w-auto" id="navbar-default">
+            <!-- Navigation Links (shown when logged in) -->
+            @if (isLogin === true) {
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 md:mt-0 border border-gray-200 md:flex-row md:space-x-1 rtl:space-x-reverse md:border-0">
+                    <li>
+                        <a routerLink="/home" routerLinkActive="bg-teal-600 text-white" 
+                           class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 md:py-2 md:px-3 transition-all duration-200">
+                            <i class="fas fa-home mr-2"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/products" routerLinkActive="bg-teal-600 text-white" 
+                           class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 md:py-2 md:px-3 transition-all duration-200">
+                            <i class="fas fa-box mr-2"></i>
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/categories" routerLinkActive="bg-teal-600 text-white" 
+                           class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 md:py-2 md:px-3 transition-all duration-200">
+                            <i class="fas fa-th-large mr-2"></i>
+                            Categories
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/brands" routerLinkActive="bg-teal-600 text-white" 
+                           class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 md:py-2 md:px-3 transition-all duration-200">
+                            <i class="fas fa-crown mr-2"></i>
+                            Brands
+                        </a>
+                    </li>
+                </ul>
+            }
+
+            <!-- Right Side Actions -->
+            <ul class="font-medium flex flex-col ms-auto p-4 md:p-0 mt-4 md:mt-0 border border-gray-200 md:flex-row md:space-x-2 rtl:space-x-reverse md:border-0">
+                <!-- Cart -->
+                <li>
+                    <a routerLink="/cart" routerLinkActive="bg-teal-600 text-white" 
+                       class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 md:py-2 md:px-3 relative transition-all duration-200">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        @if (cartItemsCount() > 0) {
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+                                {{ cartItemsCount() }}
+                            </span>
+                        }
+                    </a>
+                </li>
+                
+                <!-- Social Links -->
+                <li class="hidden md:block">
+                    <a href="#" class="block py-2 px-3 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class="hidden md:block">
+                    <a href="#" class="block py-2 px-3 rounded-lg text-gray-600 hover:bg-pink-50 hover:text-pink-600 transition-all duration-200">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="hidden md:block">
+                    <a href="#" class="block py-2 px-3 rounded-lg text-gray-600 hover:bg-sky-50 hover:text-sky-600 transition-all duration-200">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="hidden md:block">
+                    <a href="#" class="block py-2 px-3 rounded-lg text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+
+                <!-- Auth Links -->
+                @if (isLogin === false) {
+                    <li>
+                        <a routerLink="/register" routerLinkActive="bg-purple-600 text-white" 
+                           class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-700 md:py-2 md:px-3 transition-all duration-200">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            Register
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/login" routerLinkActive="bg-teal-600 text-white" 
+                           class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-teal-50 hover:text-teal-700 md:py-2 md:px-3 transition-all duration-200">
+                            <i class="fas fa-sign-in-alt mr-2"></i>
+                            Login
+                        </a>
+                    </li>
+                } @else {
+                    <li>
+                        <a (click)="signOut()" 
+                           class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-700 md:py-2 md:px-3 cursor-pointer transition-all duration-200">
+                            <i class="fas fa-sign-out-alt mr-2"></i>
+                            Sign Out
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
+  

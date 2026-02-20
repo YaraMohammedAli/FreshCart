@@ -1,0 +1,62 @@
+<div class="group relative overflow-hidden bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+
+    <!-- Product Link -->
+    <div [routerLink]="['/details', cardProduct.slug, cardProduct._id]" class="block cursor-pointer">
+        
+        <!-- Image Container -->
+        <div class="relative h-56 overflow-hidden bg-linear-to-br from-gray-50 to-gray-100">
+            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
+                 [src]="cardProduct.imageCover" [alt]="cardProduct.title">
+            
+            <!-- Category Badge -->
+            <div class="absolute top-3 left-3 bg-teal-600 text-white text-xs px-3 py-1 rounded-full font-semibold backdrop-blur-sm bg-opacity-90">
+                {{cardProduct.category.name}}
+            </div>
+            
+            <!-- Hover Overlay -->
+            <div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="p-5">
+            <!-- Title -->
+            <h4 class="text-lg font-semibold text-gray-800 mb-3 line-clamp-2 group-hover:text-teal-600 transition-colors duration-300">
+                {{cardProduct.title}}
+            </h4>
+            
+            <!-- Price and Rating Row -->
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-bold text-teal-600">
+                        {{cardProduct.price}} EGP
+                    </span>
+                    <span class="text-xs text-gray-500">Inclusive of all taxes</span>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="flex items-center gap-2">
+                    <button class="p-2 rounded-lg bg-gray-100 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add to Cart Button -->
+    <button (click)="addItemToCart(cardProduct._id)" 
+            class="absolute bottom-0 left-0 right-0 bg-linear-to-r from-teal-600 to-cyan-600 text-white py-4 font-semibold 
+                   translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out
+                   hover:from-teal-700 hover:to-cyan-700 flex items-center justify-center gap-2 shadow-lg">
+        <i class="fas fa-shopping-cart"></i>
+        {{'Add to cart' | translate}}
+    </button>
+
+    <!-- Discount Badge (if applicable) -->
+    @if (cardProduct.priceAfterDiscount && cardProduct.price) {
+        <div class="absolute top-12 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded font-bold">
+            -{{calculateDiscountPercentage(cardProduct.price!, cardProduct.priceAfterDiscount!)}}%
+        </div>
+    }
+
+</div>

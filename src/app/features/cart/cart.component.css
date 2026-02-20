@@ -1,0 +1,158 @@
+/* Enhanced Cart Component Styles */
+
+/* Smooth animations and transitions */
+.cart-item {
+  animation: slideInUp 0.4s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Quantity selector custom styles */
+.quantity-selector {
+  @apply flex items-center bg-white border border-gray-300 rounded-lg overflow-hidden shadow-sm;
+}
+
+.quantity-selector button {
+  @apply px-3 py-2 bg-gray-50 hover:bg-teal-600 hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500;
+}
+
+.quantity-selector span {
+  @apply px-4 py-2 font-semibold border-x border-gray-300 min-w-[60px] text-center bg-gray-50;
+}
+
+/* Remove button hover effect */
+.remove-btn {
+  @apply transition-all duration-300 transform hover:scale-105;
+}
+
+/* Product image hover effect */
+.product-image {
+  @apply transition-transform duration-300 ease-in-out;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}
+
+/* Empty state animation */
+.empty-state {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded;
+}
+
+/* Cart item hover effects */
+.cart-item-card {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.cart-item-card:hover {
+  @apply shadow-lg border-teal-300 transform translate-y-[-2px];
+}
+
+/* Order summary sticky positioning */
+.order-summary {
+  @apply sticky top-4 transition-all duration-300;
+}
+
+/* Button press effect */
+.btn-press {
+  transition: all 0.1s ease-in-out;
+}
+
+.btn-press:active {
+  transform: scale(0.98);
+}
+
+/* Promo code input focus effect */
+.promo-input:focus {
+  @apply ring-2 ring-teal-500 ring-offset-2 border-transparent;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cart-item-card {
+    @apply p-3;
+  }
+  
+  .order-summary {
+    @apply static mt-6;
+  }
+}
+
+/* Custom scrollbar for cart items */
+.cart-items-container {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.cart-items-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-items-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.cart-items-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.cart-items-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Badge animation for item count */
+.item-count-badge {
+  animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Success message animation */
+.success-message {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

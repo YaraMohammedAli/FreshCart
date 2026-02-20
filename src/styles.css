@@ -1,3 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+body{
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+}
+
+@utility container{
+    margin: 0 auto;
+}
+
+.btn-main {@apply bg-teal-600 py-1.75 px-5 border border-gray-300 rounded-[5px] text-white cursor-pointer disabled:cursor-not-allowed disabled:bg-gray-300 disabled:hover:bg-gray-300 hover:bg-blue-900 transition-[background-color] duration-500;
+  }
+.card{ @apply border border-gray shadow rounded overflow-hidden p-2
+}
+.main-input{
+  @apply bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-teal-800/50 focus:border-teal-800 block w-full px-2.5 py-2 shadow-xs
+}
+.main-label{
+  @apply block mb-2.5 text-sm font-medium text-heading
+}
+
+.ngx-pagination .current {
+  background:teal !important;
+  border-radius: 45%;
+}

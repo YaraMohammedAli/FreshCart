@@ -1,0 +1,37 @@
+<div class="bg-gray-100 min-h-screen">
+    <div class="container xl:w-[95%] py-8">
+        <h2 class="text-2xl text-teal-600 font-bold mb-6">All Products</h2>
+
+        <div class="my-6 relative">
+
+            <input  type=" search" id="search" class="main-input w-1/2 mx-auto " placeholder="Search By Title..."  [(ngModel)]="text" />
+
+
+        </div>
+
+        <div class="parent gap-3 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            @for (product of productList()| paginate: pagination |search:text ; track product.id) {
+                <app-card [cardProduct]="product"></app-card>
+
+            }
+            @empty {
+                <div class="col-span-5 w-1/4 mx-auto">
+                    <div class="p-4 mt-4 text-center text-base border-2 border-teal-700 ring-teal-700/50 text-teal-500 rounded-base bg-gray-200" 
+                    role="alert">
+                        NO DATA FOUND...
+                    </div>
+                </div>
+            }
+        </div>
+
+        @if (productList().length === 0) {
+        <div class="text-center py-12">
+            <p class="text-gray-500 text-lg">Loading products...</p>
+        </div>
+        }
+
+        <div class="mt-6 flex flex-wrap justify-center  ">
+            <pagination-controls id="products" (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+    </div>
+</div>
